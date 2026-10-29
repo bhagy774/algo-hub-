@@ -1,0 +1,62 @@
+{
+  "version": "20261028-011039",
+  "symbol": "ETHUSDT",
+  "timeframe": "15m",
+  "data_kind": "real_historical_ohlcv",
+  "feature_names": [
+    "ret_1",
+    "ret_4",
+    "ret_16",
+    "atr_pct",
+    "range_pct",
+    "body_ratio",
+    "upper_wick_ratio",
+    "lower_wick_ratio",
+    "volume_z",
+    "realized_vol_16",
+    "dist_high_32",
+    "dist_low_32",
+    "slope_16",
+    "direction"
+  ],
+  "label": {
+    "type": "triple_barrier",
+    "tp_atr": 1.5,
+    "sl_atr": 1.0,
+    "horizon_bars": 24,
+    "cost_pct_round_trip": 0.0008,
+    "entry": "next_bar_open",
+    "same_bar": "loss"
+  },
+  "split": {
+    "train": "first 60%",
+    "val": "next 20% (threshold + early stop)",
+    "test": "last 20% untouched",
+    "purge_bars": 26
+  },
+  "data_range": [
+    1785927600000,
+    1793126700000
+  ],
+  "n_candles": 8000,
+  "threshold": 0.3263852000236511,
+  "oos": {
+    "auc": 0.46668521721869327,
+    "logloss": 0.6562028527259827,
+    "logloss_base_rate": 0.648018370502882,
+    "n_test": 3150,
+    "base_win_rate": 0.34984126984126984,
+    "expectancy_R_unfiltered": -0.2699127387684456,
+    "expectancy_R_filtered": -0.30797713812346406,
+    "n_kept": 1963,
+    "kept_fraction": 0.6231746031746032,
+    "win_rate_filtered": 0.33520122261844115,
+    "val_auc": 0.5373769790832137
+  },
+  "validated": false,
+  "rejected_reasons": [
+    "test AUC 0.467 < 0.55",
+    "filter does not improve expectancy over unfiltered baseline"
+  ],
+  "note": "Probability is P(hit 1.5R before 1R within 24 bars). Veto-only advisory."
+}

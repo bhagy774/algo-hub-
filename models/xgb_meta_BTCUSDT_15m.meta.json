@@ -1,0 +1,61 @@
+{
+  "version": "20261028-011019",
+  "symbol": "BTCUSDT",
+  "timeframe": "15m",
+  "data_kind": "real_historical_ohlcv",
+  "feature_names": [
+    "ret_1",
+    "ret_4",
+    "ret_16",
+    "atr_pct",
+    "range_pct",
+    "body_ratio",
+    "upper_wick_ratio",
+    "lower_wick_ratio",
+    "volume_z",
+    "realized_vol_16",
+    "dist_high_32",
+    "dist_low_32",
+    "slope_16",
+    "direction"
+  ],
+  "label": {
+    "type": "triple_barrier",
+    "tp_atr": 1.5,
+    "sl_atr": 1.0,
+    "horizon_bars": 24,
+    "cost_pct_round_trip": 0.0008,
+    "entry": "next_bar_open",
+    "same_bar": "loss"
+  },
+  "split": {
+    "train": "first 60%",
+    "val": "next 20% (threshold + early stop)",
+    "test": "last 20% untouched",
+    "purge_bars": 26
+  },
+  "data_range": [
+    1785927600000,
+    1793126700000
+  ],
+  "n_candles": 8000,
+  "threshold": 0.3309468649327755,
+  "oos": {
+    "auc": 0.517376511627907,
+    "logloss": 0.62425696849823,
+    "logloss_base_rate": 0.6249568431794081,
+    "n_test": 3150,
+    "base_win_rate": 0.31746031746031744,
+    "expectancy_R_unfiltered": -0.4508289429151759,
+    "expectancy_R_filtered": -0.41128981181558844,
+    "n_kept": 1682,
+    "kept_fraction": 0.533968253968254,
+    "win_rate_filtered": 0.31866825208085614,
+    "val_auc": 0.5433205110748003
+  },
+  "validated": false,
+  "rejected_reasons": [
+    "test AUC 0.517 < 0.55"
+  ],
+  "note": "Probability is P(hit 1.5R before 1R within 24 bars). Veto-only advisory."
+}

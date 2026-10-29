@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+*.zip
+*.exe
+.env
+.env.*
+.jarvis_state/
+.pytest_cache/
+.ruff_cache/
+scratch/
